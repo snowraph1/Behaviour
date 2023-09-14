@@ -1,7 +1,7 @@
 {
   "name": "com.snowraph.interactiveobjects",
-  "version": "1.0.4",
-  "displayName": "InteractiveObjects",
+  "version": "1.0.5",
+  "displayName": "[SNOWRAPH] InteractiveObjects",
   "description": "A base package for any interactive objects",
   "unity": "2020.3",
   "author": {
