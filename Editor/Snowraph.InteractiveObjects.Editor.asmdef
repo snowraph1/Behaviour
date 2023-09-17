@@ -1,0 +1,18 @@
+{
+    "name": "Snowraph.InteractiveObjects.Utilities",
+    "rootNamespace": "",
+    "references": [
+        "GUID:371ee6642c367874da8523125b025ab8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
