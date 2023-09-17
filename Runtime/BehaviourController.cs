@@ -4,28 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Snowraph.InteractiveObjects
+namespace Snowraph.Behaviour
 {
-    public class InteractiveObject : MonoBehaviour, IInteractiveObject
+    public class BehaviourController : MonoBehaviour, IBehaviourController
     {
         #region Private Fields
 
-        [SerializeField] private List<Component> _interactiveComponents = new List<Component>();
+        [SerializeField] private List<Component> _behaviourComponents = new List<Component>();
 
         #endregion
 
-        #region IInteractiveObject Properties
+        #region IBehaviourObject Properties
 
         /// <summary>
-        /// The list of component of the interactive object
+        /// The list of component of the behaviour controller
         /// </summary>
-        public List<Component> InteractiveComponents
+        public List<Component> BehaviourComponents
         {
-            get { return _interactiveComponents; }
+            get { return _behaviourComponents; }
         }
 
         /// <summary>
-        /// The root GameObject of the interactive object
+        /// The root GameObject of the behaviour controller
         /// </summary>
         public GameObject RootGameObject
         {
@@ -33,7 +33,7 @@ namespace Snowraph.InteractiveObjects
         }
 
         /// <summary>
-        /// The name of the interactive object
+        /// The name of the behaviour controller
         /// </summary>
         public string Name
         {
@@ -42,10 +42,10 @@ namespace Snowraph.InteractiveObjects
 
         #endregion
 
-        #region IInteractiveObject Methods
+        #region IBehaviourObject Methods
 
         /// <summary>
-        /// Initialize the interactive object
+        /// Initialize the behaviour controller
         /// </summary>
         public virtual void Initialize()
         {
@@ -53,7 +53,7 @@ namespace Snowraph.InteractiveObjects
         }
 
         /// <summary>
-        /// Despawn the interactive object
+        /// Despawn the behaviour controller
         /// </summary>
         public virtual void Despawn()
         {
@@ -61,17 +61,17 @@ namespace Snowraph.InteractiveObjects
         }
 
         /// <summary>
-        /// Get an interactive component from the list of component
+        /// Get an behaviour component from the list of component
         /// </summary>
         /// <typeparam name="T">The type of the component</typeparam>
         /// <returns>The component or null</returns>
-        public T GetInteractiveComponent<T>() where T : Component
+        public T GetBehaviourComponent<T>() where T : Component
         {
-            for (int i = 0; i < _interactiveComponents.Count; i++)
+            for (int i = 0; i < _behaviourComponents.Count; i++)
             {
-                if (_interactiveComponents[i].GetType() == typeof(T))
+                if (_behaviourComponents[i].GetType() == typeof(T))
                 {
-                    return (T)_interactiveComponents[i];
+                    return (T)_behaviourComponents[i];
                 }
             }
 
@@ -83,15 +83,15 @@ namespace Snowraph.InteractiveObjects
         /// </summary>
         /// <typeparam name="T">The type of component</typeparam>
         /// <returns>The list or null if no component is found</returns>
-        public List<T> GetInteractiveComponents<T>() where T : Component
+        public List<T> GetBehaviourComponents<T>() where T : Component
         {
             List<T> components = new List<T>();
 
-            for (int i = 0; i < _interactiveComponents.Count; i++)
+            for (int i = 0; i < _behaviourComponents.Count; i++)
             {
-                if (_interactiveComponents[i].GetType() == typeof(T))
+                if (_behaviourComponents[i].GetType() == typeof(T))
                 {
-                    components.Add((T)_interactiveComponents[i]);
+                    components.Add((T)_behaviourComponents[i]);
                 }
             }
 
@@ -113,11 +113,11 @@ namespace Snowraph.InteractiveObjects
         /// </summary>
         private void InitializeComponents()
         {
-            for (int i = 0; i < _interactiveComponents.Count; i++)
+            for (int i = 0; i < _behaviourComponents.Count; i++)
             {
-                if (_interactiveComponents[i] is IInitializable)
+                if (_behaviourComponents[i] is IInitializable)
                 {
-                    ((IInitializable)_interactiveComponents[i]).Initialize(this);
+                    ((IInitializable)_behaviourComponents[i]).Initialize(this);
                 };
             }
         }
@@ -127,7 +127,7 @@ namespace Snowraph.InteractiveObjects
         #region Public Methods
 
         /// <summary>
-        /// Used byt the InteractiveObjectEditor to update the component list with components in child objects.
+        /// Used byt the BehaviourObjectEditor to update the component list with components in child objects.
         /// </summary>
         public void UpdateComponentList()
         {
@@ -138,25 +138,25 @@ namespace Snowraph.InteractiveObjects
                 if (components[i] is Transform ||
                     components[i] is Rigidbody ||
                     components[i] is Collider ||
-                    components[i] is IInteractiveObject ||
+                    components[i] is IBehaviourController ||
                     components[i] is MeshRenderer ||
                     components[i] is MeshFilter ||
-                    _interactiveComponents.Contains(components[i]) ||
+                    _behaviourComponents.Contains(components[i]) ||
                     components[i] is ParticleSystem ||
                     components[i] is ParticleSystemRenderer)
                 {
                     continue;
                 }
 
-                _interactiveComponents.Add(components[i]);
+                _behaviourComponents.Add(components[i]);
             }
 
             //Cleaning the component list
-            for (int i = _interactiveComponents.Count - 1; i >= 0; i--)
+            for (int i = _behaviourComponents.Count - 1; i >= 0; i--)
             {
-                if (_interactiveComponents[i] == null)
+                if (_behaviourComponents[i] == null)
                 {
-                    _interactiveComponents.RemoveAt(i);
+                    _behaviourComponents.RemoveAt(i);
                 }
             }
         }

@@ -1,20 +1,20 @@
 using UnityEngine;
 using UnityEditor;
-using Snowraph.InteractiveObjects;
+using Snowraph.Behaviour;
 
-namespace Snowraph.InteractiveObjects.Utilities
+namespace Snowraph.Behaviour.Utilities
 {
-    [CustomEditor(typeof(InteractiveObject))]
+    [CustomEditor(typeof(BehaviourController))]
     public class InteractiveObjectEditor : Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
-            InteractiveObject interactiveObjectScript = (InteractiveObject)target;
+            BehaviourController behaviourControllerScript = (BehaviourController)target;
             if (GUILayout.Button("Update component list"))
             {
-                interactiveObjectScript.UpdateComponentList();
+                behaviourControllerScript.UpdateComponentList();
             }
         }
     }

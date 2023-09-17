@@ -1,12 +1,8 @@
 {
-    "name": "Snowraph.InteractiveObjects.Utilities",
+    "name": "Snowraph.Behaviour",
     "rootNamespace": "",
-    "references": [
-        "GUID:371ee6642c367874da8523125b025ab8"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

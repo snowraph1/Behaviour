@@ -1,0 +1,18 @@
+{
+    "name": "Snowraph.Behaviour.Utilities",
+    "rootNamespace": "",
+    "references": [
+        "GUID:925a83481bf78cc44b5b8e6f1d7ee966"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

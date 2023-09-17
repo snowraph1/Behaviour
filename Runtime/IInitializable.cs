@@ -1,11 +1,11 @@
-namespace Snowraph.InteractiveObjects
+namespace Snowraph.Behaviour
 {
     public interface IInitializable
     {
         /// <summary>
-        /// Used to initialize interactive components
+        /// Used to initialize behaviour components
         /// </summary>
-        /// <param name="interactiveObject">The interactive object the initialization comes from</param>
-        void Initialize(IInteractiveObject interactiveObject);
+        /// <param name="behaviourController">The behaviour controller the initialization comes from</param>
+        void Initialize(IBehaviourController behaviourController);
     }
 }
